@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTintMode="screen"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/iv_cover"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/spot_black"
+        android:maxLines="1"
+        android:text="@string/album_name"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/iv_cover"
+        app:layout_constraintTop_toTopOf="@+id/iv_cover" />
+
+    <TextView
+        android:id="@+id/tv_artist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/spot_book"
+        android:text="@string/artist_name"
+        android:textColor="@color/grey"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_cover"
+        app:layout_constraintStart_toStartOf="@+id/tv_title" />
+</androidx.constraintlayout.widget.ConstraintLayout>
