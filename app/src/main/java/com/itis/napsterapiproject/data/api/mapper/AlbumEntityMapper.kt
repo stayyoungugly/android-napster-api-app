@@ -17,10 +17,10 @@ class AlbumEntityMapper @Inject constructor() {
         id = albumResponse.id,
         name = albumResponse.name,
         artistName = albumResponse.artistName,
-        released = albumResponse.originallyReleased,
+        released = albumResponse.originallyReleased.substring(0, 10),
         label = albumResponse.label,
         copyright = albumResponse.copyright,
         trackCount = albumResponse.trackCount,
-        imageLink = albumResponse.links.images.href
+        imageLink = "https://api.napster.com/imageserver/v2/albums/${albumResponse.id}/images/500x500.jpg"
     )
 }

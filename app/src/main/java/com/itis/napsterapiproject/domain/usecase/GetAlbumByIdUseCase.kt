@@ -9,9 +9,7 @@ import javax.inject.Inject
 class GetAlbumByIdUseCase @Inject constructor(
     private val repository: AlbumRepository
 ) {
-
     operator fun invoke(id: String): Single<AlbumEntity> =
         repository.getAlbumById(id)
             .subscribeOn(Schedulers.io())
-
 }

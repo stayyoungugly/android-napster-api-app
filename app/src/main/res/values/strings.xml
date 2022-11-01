@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Napster Api Project</string>
+    <string name="top_albums_text">Top 20 New Albums! Really HOT</string>
+    <string name="album_name">AlbumName</string>
+    <string name="artist_name">ArtistName</string>
+    <string name="textview">TextView</string>
 </resources>

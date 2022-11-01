@@ -15,14 +15,13 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-private const val API_HEADER = "api_key"
+private const val API_HEADER = "apikey"
 private const val API_KEY = BuildConfig.API_KEY
 private const val BASE_URL = "https://api.napster.com/v2.2/"
 
 @Module
 @InstallIn(SingletonComponent::class)
 class NetModule {
-
     @Provides
     @LoggingInterceptor
     fun provideLoggingInterceptor(): Interceptor {
@@ -34,9 +33,9 @@ class NetModule {
 
     @Provides
     @ApiKeyHeaderInterceptor
-    fun apiKeyHeaderInterceptor(chain: Interceptor.Chain): Interceptor = Interceptor {
-        val original = chain.request()
-        chain.proceed(
+    fun apiKeyHeaderInterceptor(): Interceptor = Interceptor {
+        val original = it.request()
+        it.proceed(
             original.newBuilder()
                 .header(
                     API_HEADER, API_KEY
@@ -51,12 +50,12 @@ class NetModule {
         @ApiKeyHeaderInterceptor apiKeyHeaderInterceptor: Interceptor
     ): OkHttpClient =
         OkHttpClient.Builder()
+            .addInterceptor(apiKeyHeaderInterceptor)
             .also {
                 if (BuildConfig.DEBUG) {
                     it.addInterceptor(loggingInterceptor)
                 }
             }
-            .addInterceptor(apiKeyHeaderInterceptor)
             .build()
 
     @Provides

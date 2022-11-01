@@ -1,7 +1,5 @@
 package com.itis.napsterapiproject.domain.entity
 
-import com.google.gson.annotations.SerializedName
-
 data class AlbumEntity(
     val id: String,
     val name: String,
